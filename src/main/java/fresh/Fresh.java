@@ -5,6 +5,7 @@ import burp.IBurpExtenderCallbacks;
 import burp.IExtensionHelpers;
 import fresh.gui.ContextMenuFactory;
 import fresh.gui.GuiController;
+import fresh.listeners.RequestController;
 import fresh.utilities.Logger;
 
 import javax.swing.*;
@@ -30,6 +31,10 @@ public class Fresh implements IBurpExtender {
 
         Logger.log("Registering context menu");
         Fresh.callbacks.registerContextMenuFactory(new ContextMenuFactory());
+
+        Logger.log("Registering HTTP listener");
+        Fresh.callbacks.registerHttpListener(new RequestController());
+
         Logger.log("Fresh loaded, be fresh");
     }
 }
